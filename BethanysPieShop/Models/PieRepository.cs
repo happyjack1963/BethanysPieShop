@@ -34,7 +34,7 @@ namespace BethanysPieShop.Models
 
         Pie IPieRepository.GetPieById(int pieId)
         {
-            throw new NotImplementedException();
+            return _appDbContext.Pies.FirstOrDefault(p => p.PieId == pieId);
         }
     }
 }

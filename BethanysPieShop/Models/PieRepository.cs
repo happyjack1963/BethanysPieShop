@@ -17,22 +17,21 @@ namespace BethanysPieShop.Models
 
         public IEnumerable<Pie> AllPies
         {
-            get { return _appDbContext.Pies.Include(c => c.Category); }
+            get
+            {
+                return _appDbContext.Pies.Include(c => c.Category);
+            }
         }
 
         public IEnumerable<Pie> PiesOfTheWeek
         {
-            get { return _appDbContext.Pies.Include(c => c.Category).Where(p => p.IsPieOfTheWeek); }
+            get
+            {
+                return _appDbContext.Pies.Include(c => c.Category).Where(p => p.IsPieOfTheWeek);
+            }
         }
 
         public Pie GetPieById(int pieId)
-        {
-            return _appDbContext.Pies.FirstOrDefault(p => p.PieId == pieId);
-        }
-
-        IEnumerable<Pie> IPieRepository.PiesOfTheWeek => throw new NotImplementedException();
-
-        Pie IPieRepository.GetPieById(int pieId)
         {
             return _appDbContext.Pies.FirstOrDefault(p => p.PieId == pieId);
         }
